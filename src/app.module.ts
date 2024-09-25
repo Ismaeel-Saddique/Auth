@@ -2,9 +2,10 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { user } from './entities/user';
+import { UserEntity} from './entities/user';
 import { AuthModule } from './api/auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { PassportModules } from './passport/passport.module';
 
 @Module({
   imports: [
@@ -16,9 +17,9 @@ import { ConfigModule } from '@nestjs/config';
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database:  process.env.DB_DATABASE,
-    entities: [user],
+    entities: [UserEntity],
     synchronize: true,
-  }), AuthModule],
+  }), AuthModule, PassportModules],
   controllers: [AppController],
   providers: [AppService],
 })
