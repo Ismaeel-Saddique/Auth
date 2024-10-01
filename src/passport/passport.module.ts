@@ -1,6 +1,5 @@
 import * as dotenv from 'dotenv'
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from 'src/entities/user';
@@ -15,7 +14,7 @@ dotenv.config();
         }),
         JwtModule.register({
             secret: process.env.JWT_SECRET,
-            signOptions: { expiresIn: '48h' }
+            signOptions: { expiresIn: '3m' }
         }),
         TypeOrmModule.forFeature([UserEntity])
     ],

@@ -16,4 +16,5 @@ export class UpdateCredenitialsDto{
           'Password must contain at least 1 uppercase letter, 1 number, and 1 special character',
       })
     password?: string
+
 }
